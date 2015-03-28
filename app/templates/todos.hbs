@@ -2,7 +2,7 @@
     value=newTitle action="createTodo"}}
 <section id="main">
 <ul id="todo-list">
-    {{#each}}
+    {{#each itemController="todo"}}
     <li {{bind-attr class="isCompleted:completed isEditing:editing"}}>
         {{#if isEditing}}
             {{input type="text" class="edit" value=title focus-out="acceptChanges"
@@ -10,6 +10,7 @@
         {{else}}
             {{input type="checkbox" checked=isCompleted class="toggle"}}
             <label {{action "editTodo" on="doubleClick"}}>{{title}}</label><button class="destroy"></button>
+            <button {{action "removeTodo"}} class="destroy"></button>
         {{/if}}
         </li>
     {{/each}}
